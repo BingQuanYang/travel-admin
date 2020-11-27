@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.lct.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.smart.lct.entity.Product">
+        <!--@mbg.generated-->
+        <!--@Table t_product-->
+        <id column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="product_status" jdbcType="INTEGER" property="productStatus"/>
+        <result column="product_type" jdbcType="INTEGER" property="productType"/>
+        <result column="main_tourist_attraction" jdbcType="VARCHAR" property="mainTouristAttraction"/>
+        <result column="main_heading" jdbcType="VARCHAR" property="mainHeading"/>
+        <result column="subheading" jdbcType="VARCHAR" property="subheading"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="expiration_time" jdbcType="TIMESTAMP" property="expirationTime"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="update_person" jdbcType="VARCHAR" property="updatePerson"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="score" jdbcType="INTEGER" property="score"/>
+        <result column="click" jdbcType="BIGINT" property="click"/>
+        <result column="delete_status" jdbcType="INTEGER" property="deleteStatus"/>
+        <result column="version" jdbcType="BIGINT" property="version"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        product_id, product_status, product_type, main_tourist_attraction, main_heading,
+        subheading, create_time, expiration_time, price, update_person, update_time, score,
+        click, delete_status, version
+    </sql>
+    <resultMap extends="BaseResultMap" id="RelevanceResultMap" type="com.smart.lct.bo.ProductBo">
+        <collection property="sortingTags" ofType="com.smart.lct.entity.SortingTag"
+                    resultMap="com.smart.lct.mapper.SortingTagMapper.BaseResultMap"/>
+    </resultMap>
+    <select id="selectPageByStatusAndType" resultMap="RelevanceResultMap">
+        select p.product_id,
+               p.product_status,
+               p.product_type,
+               p.main_tourist_attraction,
+               p.main_heading,
+               p.subheading,
+               p.create_time,
+               p.expiration_time,
+               p.price,
+               p.update_person,
+               p.update_time,
+               p.score,
+               p.click,
+               p.delete_status,
+               p.version,
+               s.sorting_tag_id,
+               s.sorting_tag_name,
+               s.product_id,
+               s.delete_status,
+               s.version
+        from t_product p
+                     left join t_sorting_tag s on p.product_id = s.product_id
+                where p.delete_status = 0
+                  and s.delete_status = 0
+        <if test="productStatus != 0">
+            and p.product_status = #{productStatus}
+        </if>
+        <if test="productType != 0">
+            and p.product_type = #{productType}
+        </if>
+    </select>
+</mapper>
