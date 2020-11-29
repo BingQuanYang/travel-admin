@@ -5,6 +5,7 @@
         <!--@mbg.generated-->
         <!--@Table t_product-->
         <id column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="product_number" jdbcType="VARCHAR" property="productNumber"/>
         <result column="product_status" jdbcType="INTEGER" property="productStatus"/>
         <result column="product_type" jdbcType="INTEGER" property="productType"/>
         <result column="main_tourist_attraction" jdbcType="VARCHAR" property="mainTouristAttraction"/>
@@ -22,12 +23,12 @@
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        product_id, product_status, product_type, main_tourist_attraction, main_heading,
-        subheading, create_time, expiration_time, price, update_person, update_time, score,
-        click, delete_status, version
+        product_id, product_number, product_status, product_type, main_tourist_attraction,
+        main_heading, subheading, create_time, expiration_time, price, update_person, update_time,
+        score, click, delete_status, version
     </sql>
     <resultMap extends="BaseResultMap" id="RelevanceResultMap" type="com.smart.lct.bo.ProductBo">
-        <collection property="sortingTags" ofType="com.smart.lct.entity.SortingTag"
+        <collection ofType="com.smart.lct.entity.SortingTag" property="sortingTags"
                     resultMap="com.smart.lct.mapper.SortingTagMapper.BaseResultMap"/>
     </resultMap>
     <select id="selectPageByStatusAndType" resultMap="RelevanceResultMap">
@@ -61,5 +62,68 @@
         <if test="productType != 0">
             and p.product_type = #{productType}
         </if>
+    </select>
+    <select id="selectByLike" resultMap="RelevanceResultMap">
+        select p.product_id,
+               p.product_number,
+               p.product_status,
+               p.product_type,
+               p.main_tourist_attraction,
+               p.main_heading,
+               p.subheading,
+               p.create_time,
+               p.expiration_time,
+               p.price,
+               p.update_person,
+               p.update_time,
+               p.score,
+               p.click,
+               p.delete_status,
+               p.version,
+               s.sorting_tag_id,
+               s.sorting_tag_name,
+               s.product_id,
+               s.delete_status,
+               s.version
+        from t_product p
+                     left join t_sorting_tag s
+                on p.product_id = s.product_id
+        where (p.delete_status = 0
+                and s.delete_status = 0)
+                and p.main_tourist_attraction like concat('%', #{search}, '%')
+           or p.main_heading like concat('%', #{search}, '%')
+           or p.subheading like concat('%', #{search}, '%')
+           or p.product_number like concat('%', #{search}, '%')
+           or p.update_person like concat('%', #{search}, '%')
+        limit #{start},16;
+    </select>
+    <select id="selectByProductId" resultMap="RelevanceResultMap">
+        select p.product_id,
+               p.product_number,
+               p.product_status,
+               p.product_type,
+               p.main_tourist_attraction,
+               p.main_heading,
+               p.subheading,
+               p.create_time,
+               p.expiration_time,
+               p.price,
+               p.update_person,
+               p.update_time,
+               p.score,
+               p.click,
+               p.delete_status,
+               p.version,
+               s.sorting_tag_id,
+               s.sorting_tag_name,
+               s.product_id,
+               s.delete_status,
+               s.version
+        from t_product p
+                     left join t_sorting_tag s
+                on p.product_id = s.product_id
+        where (p.delete_status = 0
+                and s.delete_status = 0)
+          and p.product_id = #{productId};
     </select>
 </mapper>

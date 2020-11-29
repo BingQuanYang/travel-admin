@@ -9,12 +9,18 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
 @Data
 public class ProductBo {
     /**
      * 主键
      */
     private Long productId;
+
+    /**
+     * 产品编号
+     */
+    private String productNumber;
 
     /**
      * 产品状态：1->上架中,2->待上架,3->仓库中,4->草稿箱,5->回收站

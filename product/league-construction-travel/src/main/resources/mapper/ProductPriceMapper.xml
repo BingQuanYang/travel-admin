@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.lct.mapper.ProductPriceMapper">
+  <resultMap id="BaseResultMap" type="com.smart.lct.entity.ProductPrice">
+    <!--@mbg.generated-->
+    <!--@Table t_product_price-->
+    <id column="product_price_id" jdbcType="BIGINT" property="productPriceId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="set_meal" jdbcType="VARCHAR" property="setMeal" />
+    <result column="pricr_adult" jdbcType="VARCHAR" property="pricrAdult" />
+    <result column="price_child" jdbcType="VARCHAR" property="priceChild" />
+    <result column="price_single" jdbcType="VARCHAR" property="priceSingle" />
+    <result column="price_weekdays" jdbcType="VARCHAR" property="priceWeekdays" />
+    <result column="price_weekend" jdbcType="VARCHAR" property="priceWeekend" />
+    <result column="term_of_validity" jdbcType="TIMESTAMP" property="termOfValidity" />
+    <result column="is_currency" jdbcType="INTEGER" property="isCurrency" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    product_price_id, product_id, set_meal, pricr_adult, price_child, price_single, price_weekdays, 
+    price_weekend, term_of_validity, is_currency, create_time, delete_status, version
+  </sql>
+</mapper>

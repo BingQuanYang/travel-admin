@@ -38,6 +38,36 @@
                 </TableGenerateConfig>
               </value>
             </entry>
+            <entry key="travel:t_product_image">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="product_image_id" />
+                  <option name="javaModelName" value="ProductImage" />
+                  <option name="moduleName" value="league-construction-travel" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="travel:t_product_item">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="product_item_id" />
+                  <option name="javaModelName" value="ProductItem" />
+                  <option name="moduleName" value="league-construction-travel" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="travel:t_product_price">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="product_price_id" />
+                  <option name="javaModelName" value="ProductPrice" />
+                  <option name="moduleName" value="league-construction-travel" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="travel:t_product_type">
               <value>
                 <TableGenerateConfig>

@@ -14,13 +14,17 @@ import lombok.Data;
 @Data
 @TableName(value = "t_product")
 public class Product {
-    public static final String COL_PRODUCT_TYPE_ID = "product_type_id";
-    public static final String COL_PRODUCT = "product";
     /**
      * 主键
      */
     @TableId(value = "product_id", type = IdType.AUTO)
     private Long productId;
+
+    /**
+     * 产品编号
+     */
+    @TableField(value = "product_number")
+    private String productNumber;
 
     /**
      * 产品状态：1->上架中,2->待上架,3->仓库中,4->草稿箱,5->回收站
@@ -107,6 +111,8 @@ public class Product {
     private Long version;
 
     public static final String COL_PRODUCT_ID = "product_id";
+
+    public static final String COL_PRODUCT_NUMBER = "product_number";
 
     public static final String COL_PRODUCT_STATUS = "product_status";
 

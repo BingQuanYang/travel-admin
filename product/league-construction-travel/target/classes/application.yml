@@ -78,3 +78,11 @@ spring:
         # 注意 由于匹配规则不支持IPV6，配置了allow或者deny之后，会导致IPV6无法访问。
         # allow:
         # deny:
+
+mybatis-plus:
+  configuration:
+    log-impl:
+      org.apache.ibatis.logging.slf4j.Slf4jImpl
+logging:
+  level:
+    com.smart.lct.mapper: debug

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.lct.mapper.ProductItemMapper">
+  <resultMap id="BaseResultMap" type="com.smart.lct.entity.ProductItem">
+    <!--@mbg.generated-->
+    <!--@Table t_product_item-->
+    <id column="product_item_id" jdbcType="BIGINT" property="productItemId" />
+    <result column="product_number" jdbcType="VARCHAR" property="productNumber" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_person" jdbcType="VARCHAR" property="productPerson" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="main_heading" jdbcType="VARCHAR" property="mainHeading" />
+    <result column="subheading" jdbcType="VARCHAR" property="subheading" />
+    <result column="product_features" jdbcType="VARCHAR" property="productFeatures" />
+    <result column="place_of_departure" jdbcType="VARCHAR" property="placeOfDeparture" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="theme" jdbcType="INTEGER" property="theme" />
+    <result column="go_vehicle" jdbcType="VARCHAR" property="goVehicle" />
+    <result column="go_back_vehicle" jdbcType="VARCHAR" property="goBackVehicle" />
+    <result column="day" jdbcType="INTEGER" property="day" />
+    <result column="night" jdbcType="INTEGER" property="night" />
+    <result column="detailed_drawing" jdbcType="VARCHAR" property="detailedDrawing" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    product_item_id, product_number, product_id, product_person, score, main_heading, 
+    subheading, product_features, place_of_departure, destination, product_type, theme, 
+    go_vehicle, go_back_vehicle, `day`, night, detailed_drawing, delete_status, version
+  </sql>
+</mapper>

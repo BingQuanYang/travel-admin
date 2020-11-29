@@ -15,6 +15,10 @@ public class ProductVo {
      * 主键
      */
     private Long productId;
+    /**
+     * 产品编号
+     */
+    private String productNumber;
 
     /**
      * 状态：0->上架中,1->待上架,2->仓库中,3->草稿箱,4->回收站
